@@ -1,0 +1,35 @@
+<html><head><script>
+function BuildEquation() { 
+	let a = document.forms["Form"]["a").value; 
+	let b = document.forms["Form"]["b"].value;
+	let c = document.forms["Form"]["c"].value; 
+	let Equation = a + '*X**2' + b + '*X' + c + '= 0'
+	document.getElementById("Equation").innerHTML = Equation
+}
+</script></head>
+<body>
+<form name="Form" action="/Equation" method="POST">
+<table>
+<tr>
+	<td>
+		a: <input type="text" id="a" name="a" width=12 value="">
+		b: <input type="text" id="b" name="b" width=12 value=""> 
+		c: <input type="text" id="c" name="c" width=12 value="">
+	</td>
+</tr>
+<tr>
+	<td>
+	<input type="button" onclick="BuildEquation()" value="BuildEquation">
+	<input type="submit" value="SendEquation"> 
+	<input type="reset" value="Reset">
+	Delta: <input type="text" id="delta" name="delta" width=12 value=""> x1: <input type="text" id="x1" name="x1" width=12 value="">
+	x2: <input type="text" id="x2" name="x2" width=12 value="">
+</td>
+</tr>
+<tr>
+	<td><textarea id=Equation name=Equation rows=5 cols=30></textarea></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

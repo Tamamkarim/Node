@@ -1,0 +1,63 @@
+<html><head><script>
+	function FormValidation() {
+		let EnimiV = document.forms["Query"]["Enimi"].value;
+		let EnimiN = document.forms["Query"]["Enimi"].name;
+		let SnimiV = document.forms["Query"]["Snimi"].value;
+		let SnimiN = document.forms["Query"]["Snimi"].name;
+		let PainoV = document.forms["Query"]["Paino"].value;
+		let PainoN = document.forms["Query"]["Paino"].name;
+		let PituusV = document.forms["Query"]["Pituus"].value;
+		let PituusN = document.forms["Query"]["Pituus"].name;
+		
+	
+		let FieldsV = [EnimiV, SnimiV, PainoV, PituusV]
+		let FieldsN = [EnimiN, SnimiN, PainoN, PituusN]
+		let fl = FieldsV.length
+		for (let i = 0; i < fl; i++) {
+			if (FieldsV[i] != "") {
+				FieldsV[i] = " " + FieldsN[i] + " " + FieldsV[i]
+			}
+		}
+		let SelectFrom = 'select * from ' + TauluV
+		let Where = ""
+		for (let i = 0; i < fl; i++) {
+			Where = Where + FieldsV[i]
+		}	
+		if (Where != "") {
+			Where = "\nwhere" + Where
+		}
+		let sql = SelectFrom + Where
+		document.getElementById("Sql").innerHTML = sql
+	
+	}
+	</script></head>
+	<form name="Query" action="/Query" method="POST">
+	<table>
+	<tr>
+		<td>
+			<label for="Enimi">Enimi</label>
+			<input type="text" id="Enimi" name="Enimi" value="">
+		</td>
+		<td>
+			<label for="Snimi">Snimi</label>
+			<input type="text" id="Snimi" name="Snimi" value="">
+		</td>
+		<td>
+			<label for="Pituus">Pituus</label>
+			<input type="text" id="Pituus" name="Pituus" value="">
+		</td>
+		<td>
+			<label for="Paino">Paino</label>
+			<input type="text" id="Paino" name="Paino" value="">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" onclick="ValidateFrom()" value="ValidateFrom">
+			<input type="reset" value="Reset">
+		</td>
+	</tr>
+	</table>
+		<textarea id=Sql name=Sql rows=5 cols=120></textarea>
+	</form></html>
+	
